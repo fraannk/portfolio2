@@ -24,6 +24,9 @@
 #include "systick_frt.h"
 #include "FreeRTOS.h"
 #include "task.h"
+#include "switch.h"
+#include "gpio.h"
+#include "hardware.h"
 
 /*****************************    Defines    *******************************/
 #define USERTASK_STACK_SIZE configMINIMAL_STACK_SIZE
@@ -50,18 +53,7 @@ int putChar()
   return(0);
 }
 
-static void setupHardware(void)
-/*****************************************************************************
-*   Input    :  -
-*   Output   :  -
-*   Function :
-*****************************************************************************/
-{
-  // TODO: Put hardware configuration and initialisation in here
 
-  // Warning: If you do not initialize the hardware clock, the timings will be inaccurate
-  init_systick();
-}
 
 
 
@@ -72,7 +64,10 @@ int main(void)
 *   Function : The super loop.
 ******************************************************************************/
 {
+
+
   setupHardware();
+
 
   // Start the tasks.
   // ----------------
